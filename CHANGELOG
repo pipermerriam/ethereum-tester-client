@@ -1,3 +1,9 @@
+0.3.0
+-----
+
+- Remove unused serpent dependency
+- Add functions to mirror the `personal` account management APIs.
+
 0.2.2
 -----
 

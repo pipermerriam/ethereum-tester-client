@@ -7,7 +7,7 @@ from setuptools import setup
 
 DIR = os.path.dirname(os.path.abspath(__file__))
 
-version = '0.2.2'
+version = '0.3.0'
 
 readme = open(os.path.join(DIR, 'README.md')).read()
 
@@ -24,7 +24,6 @@ setup(
     py_modules=['eth_tester-client'],
     install_requires=[
         "ethereum>=1.3.6",
-        "serpent",
     ],
     license="MIT",
     zip_safe=False,
