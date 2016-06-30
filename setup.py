@@ -24,6 +24,7 @@ setup(
     py_modules=['eth_tester-client'],
     install_requires=[
         "ethereum>=1.3.6",
+        "gevent>=1.1.1",
     ],
     license="MIT",
     zip_safe=False,
