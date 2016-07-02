@@ -1,7 +1,8 @@
-0.3.
+0.4.0
 -----
 
 - Use gevent rather than threads.
+- Fix missing block field `totalDifficulty`
 
 0.3.0
 -----
