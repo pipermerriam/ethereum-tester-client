@@ -1,3 +1,8 @@
+0.6.0
+-----
+
+- Fix padding bug in `get_code` implementation
+
 0.5.0
 -----
 
