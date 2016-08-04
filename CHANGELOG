@@ -1,4 +1,9 @@
-0.6.0
+0.8.0
+-----
+
+- Fix bug when reverting chain.
+
+0.7.0
 -----
 
 - Add `estimate_gas` method.
