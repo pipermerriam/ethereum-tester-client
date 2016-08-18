@@ -1,3 +1,8 @@
+# Make sure we have async stdlib enabled as
+# it's required for test run
+from gevent import monkey
+monkey.patch_all()
+
 import pytest
 
 
