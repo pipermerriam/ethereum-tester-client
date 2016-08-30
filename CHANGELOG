@@ -1,3 +1,9 @@
+1.1.0
+-----
+
+- Remove use of `gevent.spawn` in favor of a lock based approach to handling
+  async requests.
+
 1.0.0
 -----
 
