@@ -1,3 +1,8 @@
+1.2.0
+-----
+
+- Bugfix where log topic entries were being duplicated.
+
 1.1.0
 -----
 
