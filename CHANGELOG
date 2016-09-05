@@ -1,3 +1,8 @@
+1.2.1
+-----
+
+- Bugfix for event filters.  Don't default to `'latest'` block.
+
 1.2.0
 -----
 
