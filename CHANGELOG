@@ -1,3 +1,9 @@
+1.2.2
+-----
+
+- Bugfix for send_transaction to respect the specified gas limit.
+- Bugfix for send_raw_transaction to use the correct fields for gas values.
+
 1.2.1
 -----
 
