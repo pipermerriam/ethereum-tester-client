@@ -205,6 +205,7 @@ class EthTesterClient(object):
             data = b''
 
         data = decode_hex(data)
+	value = normalize_number(value)
 
         output = self.evm.send(sender=sender, to=to, value=value, evmdata=data)
         return output
