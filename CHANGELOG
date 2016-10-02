@@ -1,3 +1,8 @@
+1.2.3
+-----
+
+- Bugfix for send_transaction to respect the specified gas price.
+
 1.2.2
 -----
 
