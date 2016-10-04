@@ -7,7 +7,7 @@ from setuptools import setup
 
 DIR = os.path.dirname(os.path.abspath(__file__))
 
-version = '1.2.3'
+version = '1.2.4'
 
 readme = open(os.path.join(DIR, 'README.md')).read()
 
