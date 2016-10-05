@@ -1,3 +1,9 @@
+1.2.5
+-----
+
+- Bugfix where a failed transaction left the test chain with consumed gas but
+  no newly mined block.
+
 1.2.4
 -----
 
