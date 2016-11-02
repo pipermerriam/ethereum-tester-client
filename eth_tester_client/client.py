@@ -8,7 +8,7 @@ import time
 import itertools
 import functools
 
-from gevent.threading import Lock
+#from gevent.lock import DummySemaphore as BoundedSemaphore
 
 import rlp
 
@@ -48,16 +48,16 @@ from .filters import (
 DEFAULT_GAS_LIMIT = t.gas_limit = t.GAS_LIMIT = 3141592
 
 
-def with_lock(client_method):
-    @functools.wraps(client_method)
-    def inner(self, *args, **kwargs):
-        self._evm_lock.acquire()
-        try:
-            return client_method(self, *args, **kwargs)
-        finally:
-            self._evm_lock.release()
-
-    return inner
+#def with_lock(client_method):
+#    @functools.wraps(client_method)
+#    def inner(self, *args, **kwargs):
+#        self._evm_lock.acquire()
+#        try:
+#            return client_method(self, *args, **kwargs)
+#        finally:
+#            self._evm_lock.release()
+#
+#    return inner
 
 
 class EthTesterClient(object):
@@ -71,7 +71,7 @@ class EthTesterClient(object):
     dao_fork_support = True
 
     def __init__(self):
-        self._evm_lock = Lock()
+        #self._evm_lock = BoundedSemaphore()
 
         self.snapshots = []
 
@@ -87,7 +87,7 @@ class EthTesterClient(object):
         self.log_filters = {}
         self.log_filters_id_generator = itertools.count()
 
-    @with_lock
+    #@with_lock
     def reset_evm(self, snapshot_idx=None):
         if snapshot_idx is not None:
             self.revert_evm(snapshot_idx)
@@ -95,12 +95,12 @@ class EthTesterClient(object):
             self.evm = t.state()
             self.evm.block.gas_limit = DEFAULT_GAS_LIMIT
 
-    @with_lock
+    #@with_lock
     def snapshot_evm(self):
         self.snapshots.append((self.evm.block.number, self.evm.snapshot()))
         return len(self.snapshots) - 1
 
-    @with_lock
+    #@with_lock
     def revert_evm(self, snapshot_idx=None, reset_logs=False):
         if len(self.snapshots) == 0:
             raise ValueError("No snapshots to revert to")
@@ -116,7 +116,7 @@ class EthTesterClient(object):
         self.evm.revert(snapshot)
         self.evm.blocks.append(self.evm.block)
 
-    @with_lock
+    #@with_lock
     def mine_block(self):
         self.evm.mine()
 
@@ -172,7 +172,7 @@ class EthTesterClient(object):
         else:
             raise ValueError("Could not find block for provided hash")
 
-    @with_lock
+    #@with_lock
     @coerce_args_to_bytes
     def _send_transaction(self, _from=None, to=None, gas=None, gas_price=None,
                           value=0, data=b''):
@@ -240,7 +240,7 @@ class EthTesterClient(object):
 
     def send_transaction(self, *args, **kwargs):
         self._send_transaction(*args, **kwargs)
-        self.mine_block()
+        #self.mine_block()
         return encode_32bytes(self.evm.last_tx.hash)
 
     def send_raw_transaction(self, raw_tx):
